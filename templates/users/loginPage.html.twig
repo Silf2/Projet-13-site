@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Connexion{% endblock %}
+
+{% block body %}
+    <h1>Se connecter<h1>
+
+        {% if error %}
+            <div class="errorLogin">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
+
+        <form action="{{ path('app_login') }}" method="post">
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="_username" value="{{ email }}" required="true">
+
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="_password" required="true">
+
+            <button class="button button-submit">Se connecter</button>
+            <div class="accessRegister">
+                <p>Pas de compte ?</p>
+                <a href="{{ path('app_register') }}">S'inscrire</a>
+            </div>
+        </form>
+{% endblock %}

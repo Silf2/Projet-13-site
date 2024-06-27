@@ -1,0 +1,150 @@
+html, body {
+    margin: 0;
+    font-family: 'Inter';
+    color: #333333;
+    background-color: #FFFDF7;
+}
+
+/*Header & Footer*/
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 31px;
+    padding-bottom: 31px;
+    font-size: 17px;
+    border-bottom: 1px solid #F6F5F0;
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Playfair Display';
+    color: #497555;
+    font-weight: 500;
+    padding-left: 2%;
+    padding-right: 40%;
+}
+
+.logo img{
+    object-fit: contain;
+    padding-right: 10px;
+}
+
+footer{
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: #FFFFFF;
+    padding-right: 3%;
+    font-size: 17px;
+}
+
+/*Homepage : HeroHeader*/
+
+.heroHeader, .illustrationOrange, .illustrationGreen {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heroHeader, .illustrationGreen{
+    background-color: #E8F0E3;
+}
+
+.heroHeader div{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15%;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.heroHeader h1{
+    font-size: 64px;
+}
+
+.heroHeader img, .registerPage img {
+    width: 50%;
+    object-fit: cover;
+}
+
+/*Homepage : Products*/
+.headerProducts{
+    padding-left: 4%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+/*Homepage : illustrations*/
+.illustrationOrange{
+    background-color: #EBE3D3;
+}
+
+.illustrationOrange div, .illustrationGreen div{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.illustrationOrange div{
+    padding-left: 1%;
+    padding-right: 50%;
+    padding-top: 32%;
+}
+
+.illustrationGreen div{
+    padding-left: 45%;
+    padding-right: 1%;
+    padding-top: 30%;
+}
+
+.illustrationOrange img, .illustrationGreen img{
+    width: 30%;
+    object-fit: cover;
+}
+
+/*RegisterPage*/
+.registerPage{
+    display: flex;
+}
+
+#formRegister{
+    margin: auto;
+    width: 40%;
+    height: 100%;
+}
+
+.form-field {
+    margin-bottom: 15px;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-field input {
+    width: 50%;
+    padding: 2%;
+    background-color: #FFFDF7;
+    border: 1px solid #666666;
+}
+
+button{
+    width: 55%;
+    background-color: #565656;
+    color: #FFFDF7;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-size: 17px;
+    border: none;
+}

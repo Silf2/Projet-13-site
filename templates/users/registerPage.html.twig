@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Inscription{% endblock %}
+
+{% block body %}
+    <div class="registerPage">
+        <img src="{{ asset('images/illustration/registerPage.webp') }}" alt="Photo de feuilles très très vertes"/>
+        <div id="formRegister">
+            <h2>Inscription</h2>
+            <p>Tous les champs sont obligatoires</p>
+            {{ form_start(form) }}
+                <div class="form-field">
+                    {{ form_label(form.lastName) }}
+                    {{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-field">
+                    {{ form_label(form.firstName) }}
+                    {{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-field">
+                    {{ form_label(form.email) }}
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-field">
+                    {{ form_label(form.password.first) }}
+                    {{ form_widget(form.password.first, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-field">
+                    {{ form_label(form.password.second) }}
+                    {{ form_widget(form.password.second, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-field">
+                    {{ form_label(form.termsAgreed) }}
+                    {{ form_widget(form.termsAgreed, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <button>S'inscrire</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
