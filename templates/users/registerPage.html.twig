@@ -34,7 +34,10 @@
                     {{ form_widget(form.termsAgreed, {'attr': {'class': 'form-control'}}) }}
                 </div>
                 <button>S'inscrire</button>
+
             {{ form_end(form) }}
+
+            <a href="{{ path('app_login') }}" class="redirectLoginRegister">Déjà un compte ? Se connecter</a>
         </div>
     </div>
 {% endblock %}
