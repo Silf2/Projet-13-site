@@ -161,6 +161,15 @@ footer{
     border: 1px solid #666666;
 }
 
+.checkbox{
+    margin-bottom: 15px;
+    display: flex;
+}
+
+#termsAgreed{
+    width: 2%;
+}
+
 button{
     width: 55%;
     background-color: #565656;
@@ -177,6 +186,7 @@ button{
     color: #666666;
     margin-top: 2%;
     font-weight: 400;
+    display: flex;
 }
 
 /* LoginPage */

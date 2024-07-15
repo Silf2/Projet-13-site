@@ -28,18 +28,8 @@ final class RegisterPage
     #[Route('/registerPage', name: "app_registerPage")]
     public function __invoke(Request $request): Response
     {
-        $form = $this->formFactory->create(UserRegisterType::class);
-        $form->handleRequest($request);
+        $content = $this->twig->render("users/registerPage.html.twig");
 
-        if($form->isSubmitted() && $form->isValid()){
-
-            $url = $this->urlGenerator->generate('app_home');
-            return new RedirectResponse($url);
-        }
-
-        $content = $this->twig->render("users/registerPage.html.twig", [
-            'form' => $form->createView()
-        ]);
         return new Response($content);
     }
 }
