@@ -5,39 +5,36 @@
 {% block body %}
     <div class="registerPage">
         <img src="{{ asset('images/illustration/registerPage.webp') }}" alt="Photo de feuilles très très vertes"/>
-        <div id="formRegister">
+        <form id="formRegister" action="{{ path('app_register') }}" method="post">
             <h2>Inscription</h2>
             <p>Tous les champs sont obligatoires</p>
-            {{ form_start(form) }}
-                <div class="form-field">
-                    {{ form_label(form.lastName) }}
-                    {{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                <div class="form-field">
-                    {{ form_label(form.firstName) }}
-                    {{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                <div class="form-field">
-                    {{ form_label(form.email) }}
-                    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                <div class="form-field">
-                    {{ form_label(form.password.first) }}
-                    {{ form_widget(form.password.first, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                <div class="form-field">
-                    {{ form_label(form.password.second) }}
-                    {{ form_widget(form.password.second, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                <div class="form-field">
-                    {{ form_label(form.termsAgreed) }}
-                    {{ form_widget(form.termsAgreed, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                <button>S'inscrire</button>
-
-            {{ form_end(form) }}
-
+            <div class="form-field">
+                <label for="lastName">Nom :</label>
+                <input type="text" id="lastName" name="lastName" class="form-control" required>
+            </div>
+            <div class="form-field">
+                <label for="firstName">Prénom :</label>
+                <input type="text" id="firstName" name="firstName" class="form-control" required>
+            </div>
+            <div class="form-field">
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-field">
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <div class="form-field">
+                <label for="password_confirmation">Confirmer le mot de passe :</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required>
+            </div>
+            <div class="form-field">
+                <input type="checkbox" id="termsAgreed" name="termsAgreed" class="form-control" required>
+                <label for="termsAgreed">J'accepte les termes et conditions</label>
+            </div>
+            <button type="submit">S'inscrire</button>
+            
             <a href="{{ path('app_login') }}" class="redirectLoginRegister">Déjà un compte ? Se connecter</a>
-        </div>
+        </form>
     </div>
 {% endblock %}

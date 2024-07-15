@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
 #[AsController()]
-final class RegisterUser
+final class RegisterPage
 {
     public function __construct(
         private Environment $twig,
@@ -25,7 +25,7 @@ final class RegisterUser
     )
     {}
 
-    #[Route('/register', name: "app_register")]
+    #[Route('/registerPage', name: "app_registerPage")]
     public function __invoke(Request $request): Response
     {
         $form = $this->formFactory->create(UserRegisterType::class);
