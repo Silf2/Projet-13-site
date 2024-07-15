@@ -15,6 +15,15 @@
     <p class="headerProducts">NOS PRODUITS</p>
 
     <div class="products">
+        {% for product in products %}
+            <div>
+                <img src="{{ asset('images/product/' ~ product.picture) }}" alt="Images du produit {{ product.name }}"/>
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.shortDescription }}</p>
+                <p>{{ product.price }}€</p>
+                <a href="{{ path('app_product', {'id' : product.id}) }}">Voir le produit</a>
+            </div>
+        {% endfor %}
     </div>
 
     <div class="illustrationOrange">

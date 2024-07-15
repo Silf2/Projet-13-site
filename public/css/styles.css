@@ -82,6 +82,28 @@ footer{
     margin-bottom: 2%;
 }
 
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.products div {
+    background-color: #fff;
+    text-align: center;
+    padding-bottom : 20px;
+}
+
+.products img {
+    width: 100%;
+    height: auto;
+    display: block; 
+}
+
+.products a {
+    font-weight: bold;
+    color:#333333;
+}
+
 /*Homepage : illustrations*/
 .illustrationOrange{
     background-color: #EBE3D3;
@@ -171,3 +193,40 @@ button{
 .formLogin input{
     margin-bottom: 2%;
 }
+
+/* ProductPage */
+
+.productPage{
+    display: flex;
+    gap: 5%;
+}
+
+.productPage img{
+    width: 155%;
+}
+
+.productPage div{
+    padding-top: 2%;
+    padding-right: 15%;
+}
+
+.productPage h1{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.fullDescription{
+    font-size: 15px;
+    padding-bottom: 15%;
+}
+
+.price{
+    font-size: 30px;
+    padding-bottom: 1%;
+}
+
+.subTitle{
+    font-size: 12px;
+    padding-bottom: 3%;
+}
+

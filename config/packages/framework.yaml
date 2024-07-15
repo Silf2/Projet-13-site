@@ -9,6 +9,11 @@ framework:
     #esi: true
     #fragments: true
 
+    http_client:
+        scoped_clients:
+            api_client:
+                base_uri: '%env(API_DOMAIN)%'
+
 when@test:
     framework:
         test: true

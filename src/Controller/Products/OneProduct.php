@@ -10,29 +10,29 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Twig\Environment;
 
 #[AsController()]
-final class AllProductsHomepage
+final class OneProduct
 {
     public function __construct(
         private Environment $twig,
         private HttpClientInterface $apiClient,
-        private string $apiProducts
+        private string $apiOneProduct
     )
     {}
 
-    #[Route('/', name: "app_home", methods: ['GET'])]
-    public function __invoke(): Response
+    #[Route('/products/{id}', name: "app_product", methods: ['GET'])]
+    public function __invoke(int $id): Response
     {
-        $response = $this->apiClient->request('GET', $this->apiProducts);
-
+        $apiUrl = sprintf($this->apiOneProduct, $id);
+        $response = $this->apiClient->request('GET', $apiUrl);
+       
         if ($response->getStatusCode() !== 200) {
-            throw new Exception('Echec de la récupération des produits');
+            throw new Exception('Echec de la récupération du produit');
         }
 
-        $productsData = $response->toArray();
-        $products = $productsData['hydra:member'];
+        $product = $response->toArray();
 
-        $content = $this->twig->render("products/homepage.html.twig", [ 
-            'products' => $products,
+        $content = $this->twig->render("products/productPage.html.twig", [ 
+            'product' => $product,
         ]);
         
         return new Response($content);
