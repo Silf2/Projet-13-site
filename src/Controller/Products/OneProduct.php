@@ -2,6 +2,7 @@
 
 namespace App\Controller\Products;
 
+use App\HttpClient\ApiService;
 use Exception;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
@@ -15,14 +16,13 @@ final class OneProduct
     public function __construct(
         private Environment $twig,
         private HttpClientInterface $apiClient,
-        private string $apiOneProduct
     )
     {}
 
     #[Route('/products/{id}', name: "app_product", methods: ['GET'])]
     public function __invoke(int $id): Response
     {
-        $apiUrl = sprintf($this->apiOneProduct, $id);
+        $apiUrl = sprintf(ApiService::ONE_PRODUCT->value, $id);
         $response = $this->apiClient->request('GET', $apiUrl);
        
         if ($response->getStatusCode() !== 200) {

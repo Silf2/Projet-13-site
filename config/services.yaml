@@ -12,12 +12,9 @@ services:
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         bind:
             $apiRegister: '%env(API_REGISTER)%'
-            # $apiLogin: '%env(API_LOGIN)%'
             $apiProducts: '%env(API_PRODUCTS)%'
-            $apiOneProduct: '%env(API_ONEPRODUCT)%'
             # $apiCreateOrder: '%env(API_CREATEORDER)%'
             # $apiGetOrder: '%env(API_GETORDER)%'
-            # $passphrase: '%env(JWT_PASSPHRASE)%'
         
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name

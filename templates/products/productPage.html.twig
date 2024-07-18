@@ -11,7 +11,16 @@
             <p class="price">{{ product.price }}€</p>
             <p class="subTitle">Description</p>
             <p class="fullDescription">{{ product.fullDescription }}</p>
-            <button>Ajouter au panier</button>
+
+            {% if app.session.get('jwt_token') %}
+                <form action="{{ path('app_addToCart', { 'id': product.id }) }}" method="post">
+                    <label for="quantity">Quantité :</label>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1" max="99">
+                    <button type="submit">Ajouter au panier</button>
+                </form>
+            {% else %}
+                <a href="{{ path("app_login") }}">Se connecter</a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

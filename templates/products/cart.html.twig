@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Panier{% endblock %}
+
+{% block body %}
+    <h1>Mon Panier</h1>
+
+    {% if app.session.get('cart') %}
+
+        <a href="{{ path('app_clearCart') }}">x Vider le panier</a>
+
+        {% for product in products %}
+            <div class="cartCard">
+                <img src="{{ asset('images/product/' ~ product.picture) }}" alt="Images du produit {{ product.name }}"/>
+                <h2>{{ product.name }}</h2>
+                <p>Quantité : {{ product.quantity }}</p>
+                <p>{{ product.price }} €</p>
+                <p>{{ product.price * product.quantity }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Votre panier est vide</p>
+    {% endif %}
+
+{% endblock %}
