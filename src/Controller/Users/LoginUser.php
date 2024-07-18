@@ -5,22 +5,27 @@ namespace App\Controller\Users;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Routing\Annotation\Route;
-//use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Twig\Environment;
 
 #[AsController()]
 final class LoginUser
 {
     public function __construct(
-        //private AuthenticationUtils $authenticationUtils,
+        private AuthenticationUtils $authenticationUtils,
         private Environment $twig
         )
     {}
     #[Route('/login', name: 'app_login')]
     public function __invoke(): Response
     {
+        $error = $this->authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $this->authenticationUtils->getLastUsername();
 
-        $content = $this->twig->render("users/loginPage.html.twig");
+        $content = $this->twig->render('users/loginPage.html.twig', [
+            'last_username' => $lastUsername,
+            'error' => $error
+        ]);
 
         return new Response($content);
     }

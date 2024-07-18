@@ -1,14 +1,9 @@
 security:
-    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
-    password_hashers:
-        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-    
-    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
-    git providers:
-        app_user_provider:
-            entity:
-                class: App\Entity\User
-                property: email
+    # enable_authenticator_manager: true
+
+    providers:
+        api_users:
+            id: App\Security\CustomUserProvider
 
     firewalls:
         dev:
@@ -16,9 +11,10 @@ security:
             security: false
 
         main:
-            lazy: true
-            provider: app_user_provider
-            custom_authenticator: App\Security\CustomJWTAuthenticator
+            custom_authenticator: App\Security\CustomLogin
+            logout:
+                path: app_logout
+                target: app_login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

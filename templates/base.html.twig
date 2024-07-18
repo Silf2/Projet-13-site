@@ -20,14 +20,14 @@
                 <p>Green Goodies</p>
             </div>
             <a href="{{ path("app_home") }}">Nos Produits</a>
-       {# {% if app.user %} #}
+       {% if app.session.get('jwt_token') %}
             <a href="#">Mon Compte</a>
             <a href="#">Mon Panier</a>
             <a href="{{ path("app_logout") }}">Déconnexion</a>
-        {#% else %#}
+        {% else %}
             <a href="{{ path("app_register") }}">Inscription</a> 
             <a href="{{ path("app_login") }}">Connexion</a>
-        {#% endif %#}
+        {% endif %}
         </header>
         
         {% block body %}{% endblock %}
