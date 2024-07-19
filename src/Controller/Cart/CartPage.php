@@ -31,6 +31,7 @@ final class CartPage
             return new Response($content);
         }
 
+        $totalPrice = 0;
         $products = [];
         $cart = $session->get('cart');
 
@@ -44,12 +45,14 @@ final class CartPage
 
             $product = $response->toArray();
             $product['quantity'] = $item['quantity'];
+            $totalPrice += $product['price'] * $product['quantity'];
 
             $products[] = $product;
         }
 
         $content = $this->twig->render("products/cart.html.twig", [
-            "products" => $products
+            "products" => $products,
+            "totalPrice" => $totalPrice
         ]);
 
         return new Response($content);
