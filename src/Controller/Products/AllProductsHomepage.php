@@ -2,6 +2,7 @@
 
 namespace App\Controller\Products;
 
+use App\HttpClient\ApiService;
 use Exception;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
@@ -15,14 +16,13 @@ final class AllProductsHomepage
     public function __construct(
         private Environment $twig,
         private HttpClientInterface $apiClient,
-        private string $apiProducts
     )
     {}
 
     #[Route('/', name: "app_home", methods: ['GET'])]
     public function __invoke(): Response
     {
-        $response = $this->apiClient->request('GET', $this->apiProducts);
+        $response = $this->apiClient->request('GET', ApiService::ALL_PRODUCT->value);
 
         if ($response->getStatusCode() !== 200) {
             throw new Exception('Echec de la récupération des produits');

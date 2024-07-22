@@ -25,7 +25,7 @@
                     <p class="total">Total Panier : <span class="total-price">{{ totalPrice }} €</span></p>
                     <p class="shipping-fee">Frais de Livraison : Offert </p>
                 </div>
-                <a href="{{ path('app_submitCart') }}" class="checkout-button">Valider votre panier</a>
+                <a href="{{ path('app_submitCart') }}" class="checkout-button" id="checkout-button">Valider votre panier</a>
             {% else %}
                 <div class="empty-cart">
                     <p>Votre panier est vide</p>
@@ -34,4 +34,17 @@
             {% endif %}
         </div>
     </div>
+
+    {% if app.request.query.get('orderSuccess') %}
+        <script>
+            window.onload = function() {
+                if (confirm("Votre commande a été validée")) {
+                    window.location.href = "{{ path('app_home') }}";
+                } else {
+                    window.location.href = "{{ path('app_home') }}";
+                }
+            }
+        </script>
+    {% endif %}
+    
 {% endblock %}

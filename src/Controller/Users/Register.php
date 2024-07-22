@@ -2,10 +2,13 @@
 
 namespace App\Controller\Users;
 
+use App\HttpClient\ApiService;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Twig\Environment;
 
@@ -14,8 +17,7 @@ final class Register
 {
     public function __construct(
         private HttpClientInterface $apiClient,
-        private Environment $twig,
-        private string $apiRegister
+        private RouterInterface $router
     )
     {}
 
@@ -41,7 +43,7 @@ final class Register
             'password' => $password
         ];
 
-        $response = $this->apiClient->request('POST', $this->apiRegister, [
+        $response = $this->apiClient->request('POST', ApiService::REGISTER->value, [
             'json' => $data
         ]);
 
@@ -49,8 +51,6 @@ final class Register
             throw new \Exception('Echec de la création de l\'utilisateur.');
         }
 
-        $content = $this->twig->render("users/loginPage.html.twig");
-
-        return new Response($content);
+        return new RedirectResponse($this->router->generate('app_login'));
     }
 }

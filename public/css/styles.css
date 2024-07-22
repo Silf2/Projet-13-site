@@ -372,8 +372,10 @@ button{
     margin-bottom: 20px;
 }
 
-.user-page-container .order-list{
-    width: 604px;
+.user-page-container-order-list{
+    background-color: #fdfaf7;
+    padding: 4% 7% 4% 7%;
+    margin-bottom: 20px;
     height: 360px;
 }
 

@@ -2,7 +2,6 @@
 
 namespace App\Controller\Cart;
 
-use ApiPlatform\OpenApi\Model\Response;
 use App\HttpClient\ApiService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,7 +44,6 @@ final class SubmitCart
             $data['assocProductOrders'][] = $productInfo;
         }
 
-
         $response = $this->apiClient->request('POST', ApiService::ORDER->value, [
             'json' => $data,
             'headers' => [
@@ -59,6 +57,6 @@ final class SubmitCart
 
         $session->remove('cart');
 
-        return new RedirectResponse($this->router->generate('app_cart'));
+        return new RedirectResponse($this->router->generate('app_cart', ['orderSuccess' => 1]));
     }
 }
