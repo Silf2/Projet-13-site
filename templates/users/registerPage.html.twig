@@ -4,7 +4,11 @@
 
 {% block body %}
     <div class="registerPage">
-        <img src="{{ asset('images/illustration/registerPage.webp') }}" alt="Photo de feuilles très très vertes"/>
+
+        <div class="img-container">
+            <img src="{{ asset('images/illustration/registerPage.webp') }}" alt="Photo de feuilles très très vertes"/>
+        </div>
+        
         <form id="formRegister" action="{{ path('app_register') }}" method="post">
             <h2>Inscription</h2>
             <p>Tous les champs sont obligatoires</p>

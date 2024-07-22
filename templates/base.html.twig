@@ -21,7 +21,7 @@
             </div>
             <a href="{{ path("app_home") }}">Nos Produits</a>
        {% if app.session.get('jwt_token') %}
-            <a href="#">Mon Compte</a>
+            <a href="{{ path("app_userPage") }}">Mon Compte</a>
             <a href="{{ path("app_cart") }}">Mon Panier</a>
             <a href="{{ path("app_logout") }}">Déconnexion</a>
         {% else %}

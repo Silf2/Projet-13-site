@@ -139,6 +139,18 @@ footer{
     display: flex;
 }
 
+.img-container{
+    margin: auto;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.img-container img{
+    width: 1000px;
+    max-height: 900px;
+}
+
 #formRegister{
     margin: auto;
     width: 40%;
@@ -351,4 +363,54 @@ button{
     font-size: 20px;
     margin-bottom: 50%;
     color: #666666;
+}
+
+/*User Page*/
+.user-page-container {
+    background-color: #fdfaf7;
+    padding: 4% 7% 4% 7%;
+    margin-bottom: 20px;
+}
+
+.user-page-container .order-list{
+    width: 604px;
+    height: 360px;
+}
+
+.user-page-container h2{
+    font-size: 18px;
+    margin-bottom: 5%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table td {
+    padding: 1%;
+    padding-bottom: 3%;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    padding: 1%;
+    padding-bottom: 3%;
+    text-align: left;
+    color: #666666;
+    font-weight: 400;
+}
+
+.delete-account-button {
+    margin: auto;
+    display: block;
+    width: 70%;
+    text-align: center;
+    background-color: #565656;
+    color: #ffffff;
+    padding: 4%;
+    text-decoration: none;
+    font-size: 18px;
 }

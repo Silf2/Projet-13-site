@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Page Utilisateur{% endblock %}
+
+{% block body %}
+    <div class="custom-body-background-cart">
+        <div class="cart-container">
+            <h1>Mon Compte</h1>
+            <div class="user-page-container order-list">
+                <h2>Mes commandes</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Date</th>
+                            <th>Prix</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders[:5] %}
+                            <tr>
+                                <td>{{ order.orderNumber }}</td>
+                                <td>{{ order.orderDate|date("Y-m-d") }}</td>
+                                <td>{{ order.price }} €</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="user-page-container">
+                <a href='#' class="delete-account-button">Supprimer mon compte</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
