@@ -23,20 +23,7 @@ final class AddToCart
         $quantity = $request->request->get('quantity');
 
         $cart = $session->get('cart', []);
-
-        $itemFound = false;
-
-        foreach ($cart as $item) {
-            if ($item['id'] == $id) {
-                $item['quantity'] += $quantity;
-                $itemFound = true;
-                break;
-            }
-        }
-
-        if(!$itemFound) {
-            $cart[] = ['id' => $id, 'quantity' => $quantity];
-        }
+        $cart[$id] = ($cart[$id] ?? 0) + $quantity;
 
         $session->set('cart', $cart);
 

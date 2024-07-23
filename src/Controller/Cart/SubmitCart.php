@@ -35,15 +35,15 @@ final class SubmitCart
         $jwtToken = $session->get('jwt_token');
         $cart = $session->get('cart');
 
-        foreach ($cart as $item) {
+        foreach ($cart as $productId => $quantity) {
             $productInfo = [
-                'product' => "/api/products/{$item['id']}",
-                'quantity' => (int) $item['quantity']
+                "product" => "/api/products/{$productId}",
+                "quantity" => $quantity
             ];
 
             $data['assocProductOrders'][] = $productInfo;
         }
-
+                
         $response = $this->apiClient->request('POST', ApiService::ORDER->value, [
             'json' => $data,
             'headers' => [
@@ -54,6 +54,7 @@ final class SubmitCart
         if ($response->getStatusCode() !== 201) {
             throw new \Exception('Echec de la création de la commande');
         }
+
 
         $session->remove('cart');
 

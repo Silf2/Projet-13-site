@@ -35,8 +35,8 @@ final class CartPage
         $products = [];
         $cart = $session->get('cart');
 
-        foreach ($cart as $item) {
-            $apiUrl = sprintf(ApiService::ONE_PRODUCT->value, $item['id']);
+        foreach ($cart as $id => $quantity) {
+            $apiUrl = sprintf(ApiService::ONE_PRODUCT->value, $id);
             $response = $this->apiClient->request('GET', $apiUrl);
            
             if ($response->getStatusCode() !== 200) {
@@ -44,7 +44,7 @@ final class CartPage
             }
 
             $product = $response->toArray();
-            $product['quantity'] = $item['quantity'];
+            $product['quantity'] = $quantity;
             $totalPrice += $product['price'] * $product['quantity'];
 
             $products[] = $product;
