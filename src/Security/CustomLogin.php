@@ -37,7 +37,7 @@ class CustomLogin extends AbstractLoginFormAuthenticator
         ]);
 
         if ($response->getStatusCode() !== Response::HTTP_OK) {
-            throw new AuthenticationException('Invalid credentials.');
+            throw new AuthenticationException('L\'identifiant ou le mot de passe est incorrect.');
         }
 
         $data = $response->toArray();
